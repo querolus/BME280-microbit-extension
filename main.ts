@@ -91,7 +91,7 @@ namespace BME280 {
     export function powerOff() {
         let ctrl = pins.createBuffer(2)
         ctrl[0] = 0xF4
-        ctrl[1] = 0x00  // Modo sleep
+        ctrl[1] = 0x00  // Sleep mode
         pins.i2cWriteBuffer(addr, ctrl, false)
     }
 
