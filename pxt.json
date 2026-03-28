@@ -1,0 +1,17 @@
+{
+    "name": "BME280",
+    "version": "0.0.1",
+    "description": "Extensión para sensor BME280 de temperatura, humedad y presión",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "testFiles": [],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}
