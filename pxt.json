@@ -1,7 +1,7 @@
 {
-    "name": "BME280",
+    "name": "BME280 by querolus",
     "version": "0.0.1",
-    "description": "Extensión para sensor BME280 de temperatura, humedad y presión",
+    "description": "Simple makeblock extension for micro:bit to use BME280 sensors (the ones currently available do not seem to work)",
     "license": "MIT",
     "dependencies": {
         "core": "*"
