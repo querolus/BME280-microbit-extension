@@ -1,4 +1,4 @@
-//% weight=100 color=#0fbc11 icon=""
+//% weight=100 color=#0fbc11 icon=""
 namespace BME280 {
     let addr = 0x77
 
@@ -39,13 +39,13 @@ namespace BME280 {
         return (msb << 8) | lsb
     }
 
-    //% block="set I2C address %address"
+    //% blockId=bme280_setaddress block="set I2C address %address"
     //% address.defl=0x77
     export function setAddress(address: number) {
         addr = address
     }
 
-    //% block="initialize BME280"
+    //% blockId=bme280_init block="initialize BME280"
     export function inicializar() {
         // Activar humedad
         let hum = pins.createBuffer(2)
@@ -87,7 +87,9 @@ namespace BME280 {
         if (dig_H4 > 2047) dig_H4 -= 4096
         if (dig_H5 > 2047) dig_H5 -= 4096
         if (dig_H6 > 127) dig_H6 -= 256
-    //% blockId=bme280_poweroff block="power off BME280" blockHidden=false
+    }
+
+    //% blockId=bme280_poweroff block="power off BME280"
     export function powerOff() {
         let ctrl = pins.createBuffer(2)
         ctrl[0] = 0xF4
@@ -95,7 +97,7 @@ namespace BME280 {
         pins.i2cWriteBuffer(addr, ctrl, false)
     }
 
-    //% blockId=bme280_temperature block="temperature (°C)" blockHidden=false
+    //% blockId=bme280_temperature block="temperature (°C)"
     export function temperature(): number {
         let raw = readReg(0xF7, 8)
         let rawT = ((raw[3] << 12) | (raw[4] << 4) | (raw[5] >> 4))
@@ -106,7 +108,7 @@ namespace BME280 {
         return Math.round(temp)
     }
 
-    //% blockId=bme280_humidity block="humidity (%)" blockHidden=false
+    //% blockId=bme280_humidity block="humidity (%)"
     export function humidity(): number {
         let raw = readReg(0xF7, 8)
         let rawH = ((raw[6] << 8) | raw[7])
@@ -120,7 +122,7 @@ namespace BME280 {
         return Math.round(h)
     }
 
-    //% blockId=bme280_pressure block="pressure (hPa)" blockHidden=false
+    //% blockId=bme280_pressure block="pressure (hPa)"
     export function pressure(): number {
         let raw = readReg(0xF7, 8)
         let rawP = ((raw[0] << 12) | (raw[1] << 4) | (raw[2] >> 4))
